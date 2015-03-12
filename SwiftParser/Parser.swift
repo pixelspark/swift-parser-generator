@@ -285,7 +285,7 @@ public class Parser {
 
     public var text:String {
         get {
-            if let capture = current_capture? {
+            if let capture = current_capture {
                 return current_reader!.substring(capture.start, ending_at: capture.end)
             }
             
