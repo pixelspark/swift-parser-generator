@@ -267,19 +267,19 @@ public func <- (left: Parser, right: ParserRuleDefinition) -> () {
 }
 
 public class Parser {
-    struct ParserCapture {
-        var start: Int
-        var end: Int
-        var action: ParserAction
+    public struct ParserCapture {
+        public var start: Int
+        public var end: Int
+        public var action: ParserAction
     }
     
     public var rule_definition: ParserRuleDefinition?
     public var rule_definitions: [ParserRuleDefinition] = []
     public var start_rule: ParserRule?
     public var debug_rules = false
-    var captures: [ParserCapture] = []
-    var current_capture:ParserCapture?
-    var current_reader:Reader?
+    public var captures: [ParserCapture] = []
+    public var current_capture: ParserCapture?
+    var current_reader: Reader?
     var named_rules: Dictionary<String,ParserRule> = Dictionary<String,ParserRule>()
     var current_named_rule = ""
 
