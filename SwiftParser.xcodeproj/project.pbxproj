@@ -47,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6527AA041C147BEC00B9159A /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		6537612319515E8A00A519A3 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		659C3CD11964102E001D10F7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		65F1D3C6195039290077E785 /* SwiftParser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftParser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +83,7 @@
 		65F1D3BC195039290077E785 = {
 			isa = PBXGroup;
 			children = (
+				6527AA041C147BEC00B9159A /* Package.swift */,
 				659C3CD11964102E001D10F7 /* README.md */,
 				6537612319515E8A00A519A3 /* MyPlayground.playground */,
 				65F1D3C8195039290077E785 /* SwiftParser */,
