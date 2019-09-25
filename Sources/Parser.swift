@@ -149,8 +149,8 @@ public class ParserRule: Hashable {
 		return try self.function(parser, reader)
 	}
 
-	public var hashValue: Int {
-		return ObjectIdentifier(self).hashValue
+	public func hash(into hasher: inout Hasher) {
+		ObjectIdentifier(self).hash(into: &hasher)
 	}
 
 	public static func ==(lhs: ParserRule, rhs: ParserRule) -> Bool {
@@ -215,7 +215,7 @@ public prefix func %!(pattern:String) -> ParserRule {
             if let m = match {
                 let res = target.substring(with: m.range)
                 // reset to end of match
-                reader.seek(pos + res.characters.count)
+                reader.seek(pos + res.count)
                 
                 parser.leave("regex", true)
                 return true
@@ -269,7 +269,7 @@ public func literal(_ string:String) -> ParserRule {
         
         let pos = reader.position
         
-        for ch in string.characters {
+        for ch in string {
             let flag = ch == reader.read()
             if !flag {
                 reader.seek(pos)
