@@ -162,10 +162,18 @@ public final class ParserMemoizingRule: ParserRule {
 	public override func matches(_ parser: Parser, _ reader: Reader) throws -> Bool {
 		let position = reader.position
 		if let m = parser.matches[self]?[position] {
-			return m
+			if m {
+				// Execute it one more time to also set correct future position
+				return try self.function(parser, reader)
+			}
+			else {
+				return false // We know it doesn't match here
+			}
 		}
+
 		let r = try self.function(parser, reader)
 
+		// Store result of parsing rule at this position
 		if parser.matches[self] == nil {
 			parser.matches[self] = [position: r]
 		}
@@ -325,10 +333,14 @@ public postfix func + (rule: ParserRule) -> ParserRule {
         var flag: Bool
 
         parser.enter("one or more")
-        
+
         repeat {
+			let lastPosition = reader.position
             flag = try rule.matches(parser, reader)
             found = found || flag
+			if flag && (lastPosition == reader.position) {
+				fatalError("parser rule returned true but did not match anything")
+			}
         } while(flag)
         
         if(!found) {
